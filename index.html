@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wellness & Health Center - Jottful Recreation</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2C5F2D',    /* Deep Forest Green */
+                        secondary: '#97BC62',  /* Sage Green */
+                        accent: '#FFE186',     /* Soft Gold */
+                        dark: '#1a1a1a',
+                        light: '#f8f9fa',
+                        cream: '#F3F4F0'
+                    },
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    boxShadow: {
+                        'soft': '0 4px 20px rgba(0, 0, 0, 0.05)',
+                        'hover': '0 10px 25px rgba(0, 0, 0, 0.1)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Styles to supplement Tailwind */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            -webkit-font-smoothing: antialiased;
+            color: #333;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i.postimg.cc/Hn62Vryp/Holistic-wellness-and-sustainabi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .section-padding {
+            padding-top: 5rem;
+            padding-bottom: 5rem;
+        }
+
+        .btn-primary {
+            background-color: #2C5F2D;
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid #2C5F2D;
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: #2C5F2D;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: #2C5F2D;
+            padding: 0.75rem 2rem;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            border: 2px solid #2C5F2D;
+        }
+
+        .btn-outline:hover {
+            background-color: #2C5F2D;
+            color: white;
+        }
+
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: #2C5F2D;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Mobile Menu Transition */
+        #mobile-menu {
+            transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        #mobile-menu.active {
+            max-height: 500px;
+            opacity: 1;
+        }
+
+        /* Input Styles */
+        .form-input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            background: #fff;
+            margin-bottom: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #2C5F2D;
+        }
+
+        /* Sticky Header Shadow */
+        header.scrolled {
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Top Bar -->
+    <div class="bg-primary text-white text-xs py-2 px-4 md:px-8">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-4">
+                <span><i class="fas fa-map-marker-alt mr-2"></i>123 Wellness Blvd, Healing City, CA</span>
+                <span class="hidden md:inline"><i class="fas fa-clock mr-2"></i>Mon-Fri: 9am - 6pm</span>
+            </div>
+            <div class="flex items-center gap-3">
+                <a href="#" class="hover:text-secondary transition"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="hover:text-secondary transition"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="hover:text-secondary transition"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header id="site-header" class="bg-white sticky top-0 z-50 transition-all duration-300 py-4 border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-primary text-white flex items-center justify-center rounded-full">
+                        <i class="fas fa-leaf text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif text-2xl font-bold text-primary leading-none group-hover:text-secondary transition">Jottful</span>
+                        <span class="text-xs text-gray-500 tracking-widest uppercase">Wellness Center</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#home" class="nav-link font-sans text-gray-700 font-medium hover:text-primary transition">Home</a>
+                    <a href="#about" class="nav-link font-sans text-gray-700 font-medium hover:text-primary transition">About</a>
+                    <a href="#services" class="nav-link font-sans text-gray-700 font-medium hover:text-primary transition">Services</a>
+                    <a href="#treatments" class="nav-link font-sans text-gray-700 font-medium hover:text-primary transition">Treatments</a>
+                    <a href="#contact" class="nav-link font-sans text-gray-700 font-medium hover:text-primary transition">Contact</a>
+                </nav>
+
+                <!-- CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <div class="hidden md:flex flex-col items-end mr-4">
+                        <span class="text-xs text-gray-500 uppercase">Call Us Today</span>
+                        <a href="tel:+15551234567" class="font-bold text-primary hover:text-secondary transition">(555) 123-4567</a>
+                    </div>
+                    <a href="#contact" class="hidden md:inline-block bg-primary hover:bg-green-800 text-white px-5 py-2 rounded text-sm font-bold transition">Book Now</a>
+                    
+                    <!-- Mobile Hamburger -->
+                    <button id="mobile-toggle" class="md:hidden text-2xl text-gray-700 focus:outline-none">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="bg-white border-t border-gray-100 md:hidden">
+            <div class="flex flex-col p-4 space-y-3">
+                <a href="#home" class="block text-gray-700 hover:text-primary font-medium">Home</a>
+                <a href="#about" class="block text-gray-700 hover:text-primary font-medium">About</a>
+                <a href="#services" class="block text-gray-700 hover:text-primary font-medium">Services</a>
+                <a href="#treatments" class="block text-gray-700 hover:text-primary font-medium">Treatments</a>
+                <a href="#contact" class="block text-gray-700 hover:text-primary font-medium">Contact</a>
+                <hr>
+                <a href="tel:+15551234567" class="block text-primary font-bold"><i class="fas fa-phone mr-2"></i>(555) 123-4567</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg h-[600px] md:h-[700px] flex items-center justify-center text-center px-4 relative">
+        <div class="relative z-10 max-w-4xl mx-auto text-white">
+            <h2 class="text-sm md:text-base uppercase tracking-[0.2em] mb-4 opacity-90">Restore Balance • Revitalize Life</h2>
+            <h1 class="font-serif text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight">Your Journey to <br/>Holistic Wellness</h1>
+            <p class="font-sans text-lg md:text-xl mb-10 opacity-90 max-w-2xl mx-auto">Experience personalized care designed to heal your body, calm your mind, and uplift your spirit.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#services" class="bg-primary border-2 border-primary text-white px-8 py-3 uppercase tracking-wider font-bold hover:bg-transparent hover:text-white transition">Our Services</a>
+                <a href="#contact" class="bg-transparent border-2 border-white text-white px-8 py-3 uppercase tracking-wider font-bold hover:bg-white hover:text-primary transition">Book Appointment</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3-Column Service Highlights -->
+    <section id="services" class="section-padding bg-white -mt-20 relative z-20">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="bg-white p-8 shadow-soft hover:shadow-hover transition transform hover:-translate-y-1 rounded-sm text-center border-t-4 border-primary">
+                    <div class="w-16 h-16 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+                        <i class="fas fa-hands-holding-circle text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-dark">Chiropractic Care</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Restore alignment and reduce pain through expert spinal adjustments and holistic structural therapy.</p>
+                    <a href="#" class="text-primary font-bold uppercase text-xs tracking-widest hover:text-secondary border-b border-primary pb-1">View Details</a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="bg-white p-8 shadow-soft hover:shadow-hover transition transform hover:-translate-y-1 rounded-sm text-center border-t-4 border-secondary">
+                    <div class="w-16 h-16 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+                        <i class="fas fa-spa text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-dark">Massage Therapy</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Relax muscles, improve circulation, and alleviate stress with our variety of therapeutic massage techniques.</p>
+                    <a href="#" class="text-primary font-bold uppercase text-xs tracking-widest hover:text-secondary border-b border-primary pb-1">View Details</a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="bg-white p-8 shadow-soft hover:shadow-hover transition transform hover:-translate-y-1 rounded-sm text-center border-t-4 border-primary">
+                    <div class="w-16 h-16 bg-cream rounded-full flex items-center justify-center mx-auto mb-6 text-primary">
+                        <i class="fas fa-seedling text-2xl"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl font-bold mb-3 text-dark">Acupuncture</h3>
+                    <p class="text-gray-600 mb-6 leading-relaxed">Balance your body's energy flow and stimulate natural healing with traditional acupuncture methods.</p>
+                    <a href="#" class="text-primary font-bold uppercase text-xs tracking-widest hover:text-secondary border-b border-primary pb-1">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Welcome / About Section -->
+    <section id="about" class="section-padding bg-cream">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Doctor consulting patient" class="rounded shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="lg:w-1/2">
+                    <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Who We Are</span>
+                    <h2 class="font-serif text-3xl md:text-4xl font-bold text-dark mb-6">Dedicated to Your Health & Well-being</h2>
+                    <p class="text-gray-600 mb-4 leading-relaxed">
+                        At Jottful Wellness, we believe that health is not just the absence of disease, but a state of complete physical, mental, and social well-being. Our approach integrates the best of modern science with time-tested holistic traditions.
+                    </p>
+                    <p class="text-gray-600 mb-8 leading-relaxed">
+                        Whether you are recovering from an injury, managing chronic pain, or simply looking to improve your overall quality of life, our team of dedicated professionals is here to guide you on your path to healing.
+                    </p>
+                    
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-primary mr-3"></i> Personalized Treatment Plans</li>
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-primary mr-3"></i> Experienced & Caring Staff</li>
+                        <li class="flex items-center text-gray-700"><i class="fas fa-check-circle text-primary mr-3"></i> Holistic & Non-Invasive Methods</li>
+                    </ul>
+
+                    <a href="#contact" class="btn-primary">Meet Our Team</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What Makes Us Different -->
+    <section class="py-16 bg-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center">
+            <h2 class="font-serif text-3xl font-bold mb-12">Why Choose Us?</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="text-center p-4">
+                    <i class="fas fa-user-md text-4xl text-secondary mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Expert Care</h4>
+                    <p class="text-gray-500 text-sm">Certified professionals with years of experience.</p>
+                </div>
+                <div class="text-center p-4">
+                    <i class="fas fa-heartbeat text-4xl text-secondary mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Patient First</h4>
+                    <p class="text-gray-500 text-sm">We listen to your needs and customize your care.</p>
+                </div>
+                <div class="text-center p-4">
+                    <i class="fas fa-calendar-check text-4xl text-secondary mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Easy Scheduling</h4>
+                    <p class="text-gray-500 text-sm">Flexible hours and online booking available.</p>
+                </div>
+                <div class="text-center p-4">
+                    <i class="fas fa-envira text-4xl text-secondary mb-4"></i>
+                    <h4 class="font-bold text-lg mb-2">Natural Healing</h4>
+                    <p class="text-gray-500 text-sm">Focusing on the body's innate ability to heal.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Treatments Grid -->
+    <section id="treatments" class="section-padding bg-light">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="text-center mb-12">
+                <span class="text-primary font-bold tracking-widest uppercase text-sm">Our Specialties</span>
+                <h2 class="font-serif text-3xl md:text-4xl font-bold mt-2">Comprehensive Treatments</h2>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Item 1 -->
+                <div class="group relative overflow-hidden rounded shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1519823551278-64ac92734fb1?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Massage" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-primary/80 transition duration-300 flex flex-col items-center justify-center">
+                        <i class="fas fa-spa text-white text-3xl mb-2 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-4 group-hover:translate-y-0"></i>
+                        <h3 class="text-white font-serif text-xl font-bold">Deep Tissue</h3>
+                    </div>
+                </div>
+                <!-- Item 2 -->
+                <div class="group relative overflow-hidden rounded shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Acupuncture" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-primary/80 transition duration-300 flex flex-col items-center justify-center">
+                        <i class="fas fa-burn text-white text-3xl mb-2 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-4 group-hover:translate-y-0"></i>
+                        <h3 class="text-white font-serif text-xl font-bold">Acupuncture</h3>
+                    </div>
+                </div>
+                <!-- Item 3 -->
+                <div class="group relative overflow-hidden rounded shadow-lg cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" alt="Rehab" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-primary/80 transition duration-300 flex flex-col items-center justify-center">
+                        <i class="fas fa-dumbbell text-white text-3xl mb-2 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-4 group-hover:translate-y-0"></i>
+                        <h3 class="text-white font-serif text-xl font-bold">Physical Rehab</h3>
+                    </div>
+                </div>
+                <!-- Item 4 -->
+                <div class="group relative overflow-hidden rounded shadow-lg cursor-pointer">
+                    <img src="https://i.postimg.cc/k5pQK014/Nutrition.jpg" alt="Nutrition" class="w-full h-64 object-cover transition duration-500 group-hover:scale-110">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-primary/80 transition duration-300 flex flex-col items-center justify-center">
+                        <i class="fas fa-carrot text-white text-3xl mb-2 opacity-0 group-hover:opacity-100 transition duration-300 transform translate-y-4 group-hover:translate-y-0"></i>
+                        <h3 class="text-white font-serif text-xl font-bold">Nutrition</h3>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#contact" class="btn-outline">Explore What We Have to Offer</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials / CTA -->
+    <section class="py-20 bg-primary text-white relative">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <i class="fas fa-quote-left text-4xl text-secondary mb-6 opacity-80"></i>
+            <blockquote class="font-serif text-2xl md:text-3xl italic leading-normal mb-8">
+                "After years of chronic back pain, I finally found relief here. The team is incredibly professional and the environment is so soothing. I feel like a new person."
+            </blockquote>
+            <cite class="block font-bold text-lg not-italic mb-10">— Sarah Jenkins, Patient</cite>
+            <a href="#contact" class="bg-white text-primary px-8 py-3 rounded font-bold uppercase tracking-widest hover:bg-secondary hover:text-white transition shadow-lg">Read More Reviews</a>
+        </div>
+    </section>
+
+    <!-- Contact & Map Section -->
+    <section id="contact" class="section-padding bg-white">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                
+                <!-- Contact Form -->
+                <div>
+                    <span class="text-secondary font-bold tracking-widest uppercase text-sm mb-2 block">Get In Touch</span>
+                    <h2 class="font-serif text-3xl font-bold mb-6">Request an Appointment</h2>
+                    <p class="text-gray-600 mb-8">Fill out the form below and our staff will get back to you within 24 hours to confirm your appointment.</p>
+                    
+                    <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">First Name *</label>
+                                <input type="text" required class="form-input" placeholder="Jane">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-bold text-gray-700 mb-1">Last Name *</label>
+                                <input type="text" required class="form-input" placeholder="Doe">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Email Address *</label>
+                            <input type="email" required class="form-input" placeholder="jane@example.com">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="(555) 123-4567">
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Service of Interest</label>
+                            <select class="form-input">
+                                <option>Chiropractic Care</option>
+                                <option>Massage Therapy</option>
+                                <option>Acupuncture</option>
+                                <option>General Consultation</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+                            <textarea rows="4" class="form-input" placeholder="How can we help you?"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full md:w-auto">Send Message</button>
+
+                        <div id="form-message" class="hidden mt-4 p-4 bg-green-50 text-green-700 border border-green-200 rounded">
+                            <i class="fas fa-check-circle mr-2"></i> Thank you! Your message has been sent successfully.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Map & Info -->
+                <div class="h-full min-h-[400px] relative shadow-soft rounded overflow-hidden">
+                    <!-- Embedded Google Map (Placeholder generic location) -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345093747!2d-122.41941548531647!3d37.7749292797591!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter+HQ!5e0!3m2!1sen!2sus!4v1532021648033" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        style="border:0; min-height: 400px;" 
+                        allowfullscreen 
+                        class="absolute inset-0 w-full h-full">
+                    </iframe>
+                    
+                    <!-- Floating Location Card -->
+                    <div class="absolute bottom-4 left-4 right-4 bg-white p-6 rounded shadow-lg max-w-xs mx-auto md:mx-0">
+                        <h4 class="font-serif font-bold text-lg mb-2">Jottful Wellness</h4>
+                        <p class="text-sm text-gray-600 mb-2"><i class="fas fa-map-marker-alt text-primary w-5"></i> 123 Wellness Blvd, CA 90210</p>
+                        <p class="text-sm text-gray-600 mb-2"><i class="fas fa-phone text-primary w-5"></i> (555) 123-4567</p>
+                        <p class="text-sm text-gray-600"><i class="fas fa-envelope text-primary w-5"></i> hello@jottfulwellness.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="py-16 bg-cream text-center px-4">
+        <h2 class="font-serif text-3xl font-bold mb-4">Ready to Start Your Healing Journey?</h2>
+        <p class="text-gray-600 mb-8 max-w-2xl mx-auto">Don't let pain or stress hold you back any longer. Schedule your consultation today.</p>
+        <a href="tel:+15551234567" class="btn-primary"><i class="fas fa-phone-alt mr-2"></i> Call Us Now</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-gray-400 py-16 text-sm">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+            
+            <!-- Column 1: About -->
+            <div>
+                <div class="flex items-center gap-2 mb-6">
+                    <div class="w-8 h-8 bg-primary text-white flex items-center justify-center rounded-full">
+                        <i class="fas fa-leaf text-sm"></i>
+                    </div>
+                    <span class="font-serif text-xl font-bold text-white">Jottful</span>
+                </div>
+                <p class="mb-6 leading-relaxed">Providing holistic healthcare services to our community for over 15 years. We focus on treating the root cause, not just the symptoms.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="w-8 h-8 bg-gray-800 flex items-center justify-center rounded hover:bg-primary hover:text-white transition"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 flex items-center justify-center rounded hover:bg-primary hover:text-white transition"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 flex items-center justify-center rounded hover:bg-primary hover:text-white transition"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <!-- Column 2: Quick Links -->
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6">Quick Links</h3>
+                <ul class="space-y-3">
+                    <li><a href="#home" class="hover:text-primary transition">Home</a></li>
+                    <li><a href="#about" class="hover:text-primary transition">About Us</a></li>
+                    <li><a href="#services" class="hover:text-primary transition">Services</a></li>
+                    <li><a href="#treatments" class="hover:text-primary transition">Treatments</a></li>
+                    <li><a href="#testimonials" class="hover:text-primary transition">Testimonials</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Column 3: Hours -->
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6">Opening Hours</h3>
+                <ul class="space-y-3">
+                    <li class="flex justify-between border-b border-gray-800 pb-2">
+                        <span>Monday - Friday</span>
+                        <span class="text-white">9:00 AM - 6:00 PM</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-800 pb-2">
+                        <span>Saturday</span>
+                        <span class="text-white">10:00 AM - 2:00 PM</span>
+                    </li>
+                    <li class="flex justify-between border-b border-gray-800 pb-2">
+                        <span>Sunday</span>
+                        <span class="text-red-400">Closed</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Column 4: Contact -->
+            <div>
+                <h3 class="text-white font-bold uppercase tracking-widest mb-6">Contact Us</h3>
+                <ul class="space-y-4">
+                    <li class="flex items-start">
+                        <i class="fas fa-map-marker-alt mt-1 mr-3 text-primary"></i>
+                        <span>123 Wellness Blvd<br>Healing City, CA 90210</span>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-phone mr-3 text-primary"></i>
+                        <a href="tel:+15551234567" class="hover:text-white transition">(555) 123-4567</a>
+                    </li>
+                    <li class="flex items-center">
+                        <i class="fas fa-envelope mr-3 text-primary"></i>
+                        <a href="mailto:info@jottfulwellness.com" class="hover:text-white transition">info@jottfulwellness.com</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="border-t border-gray-800 mt-12 pt-8 text-center px-4">
+            <p>&copy; 2026 Jottful Wellness Center. All Rights Reserved. <a href="#" class="text-gray-500 hover:text-white ml-2">Privacy Policy</a></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('mobile-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('active');
+            });
+        });
+
+        // Sticky Header Effect
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                header.classList.replace('py-4', 'py-2');
+            } else {
+                header.classList.remove('scrolled');
+                header.classList.replace('py-2', 'py-4');
+            }
+        });
+
+        // Form Submission Simulation
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const btn = event.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerText;
+            const message = document.getElementById('form-message');
+
+            // Simulate loading
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            btn.disabled = true;
+
+            // Simulate network delay
+            setTimeout(() => {
+                btn.innerText = 'Message Sent!';
+                btn.classList.add('bg-green-600');
+                message.classList.remove('hidden');
+                event.target.reset();
+                
+                // Reset button after a few seconds
+                setTimeout(() => {
+                    btn.innerText = originalText;
+                    btn.disabled = false;
+                    btn.classList.remove('bg-green-600');
+                }, 3000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
